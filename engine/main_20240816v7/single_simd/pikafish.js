@@ -207,7 +207,7 @@ var Da = a => a.startsWith("data:application/octet-stream;base64,"), F;
 F = "/pikafish.wasm";
 if (!Da(F)) {
   var Ea = F;
-  F = f.locateFile ? f.locateFile(Ea, x) : x + Ea;
+  F = "https://xiangqiai.com/engine/main_20240816v7/single_simd/pikafish.wasm";
 }
 function Fa(a) {
   if (a == F && oa) {
