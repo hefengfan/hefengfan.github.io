@@ -305,7 +305,7 @@ var ab = a => a.startsWith("data:application/octet-stream;base64,"), bb;
 bb = "pikafish.wasm";
 if (!ab(bb)) {
   var cb = bb;
-  bb = B.locateFile ? B.locateFile(cb, G) : G + cb;
+  bb = "https://xiangqiai.com/engine/main_20240816v7/multi_simd_relaxed/pikafish.wasm";
 }
 function db(a) {
   if (a == bb && Ka) {
