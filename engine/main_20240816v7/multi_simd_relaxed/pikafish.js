@@ -41,7 +41,7 @@ B.Z++;
   "undefined" != typeof D && D || a || function(b) {
     function c(l, n, u) {
       var v = new XMLHttpRequest();
-      v.open("GET", "https://hefengfan.github.io/engine/main_20240816v7/pikafish.data", !0);
+      v.open("GET", "https://hefengfan.github.io/engine/main_20240816v7/pikafish1.data", !0);
       v.responseType = "arraybuffer";
       v.onprogress = function(h) {
         var q = n;
