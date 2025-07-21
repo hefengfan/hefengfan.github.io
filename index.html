@@ -1,202 +1,435 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>hefengfan的主页</title>
-<style>
-    :root {
-      --base-font-size: clamp(14px, 2vw, 18px);
-      --h1-font-size: clamp(1.8rem, 5vw, 2.5rem);
-      --link-font-size: clamp(1.5rem, 2vw, 2.2rem);
-      --countdown-font: clamp(1.3rem, 5vw, 2rem);
-    }
-    
-    * {
-      box-sizing: border-box;
-    }
-    
-    @media (max-width: 768px) {
-      :root {
-        --base-font-size: clamp(12px, 3vw, 16px);
-        --h1-font-size: clamp(1.5rem, 6vw, 2rem);
-        --link-font-size: clamp(1.2rem, 3vw, 1.8rem);
-        --countdown-font: clamp(1.1rem, 6vw, 1.8rem);
-      }
-    }
-    
-    @media (min-width: 1200px) {
-      :root {
-        --base-font-size: clamp(16px, 1.5vw, 20px);
-        --h1-font-size: clamp(2rem, 4vw, 3rem);
-        --link-font-size: clamp(1.6rem, 1.5vw, 2.4rem);
-        --countdown-font: clamp(1.5rem, 4vw, 2.5rem);
-      }
-    }
-    
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background-color: #ddf3ff;
-      margin: 0;
-      padding: 0;
-      line-height: 1.6;
-      color: #333;
-      font-size: var(--base-font-size);
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start; /* 容器顶部对齐 */
-      padding-top: 10vh; /* 距离顶部10% */
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>hefengfan的主页</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    .container {
-      width: 80vw; /* 容器宽度为视口宽度的80% */
-      max-width: 1200px; /* 最大宽度限制 */
-      padding: 5vh 5vw; /* 内边距 */
-      background-color: #fff;
-      border-radius: 10px;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-      animation: fadeIn 1s ease;
-      overflow: hidden; /* 禁止内容溢出 */
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between; /* 内容均匀分布 */
-    }
+        :root {
+            --primary-color: #87ceeb;
+            --secondary-color: #b0e0e6;
+            --accent-color: #add8e6;
+            
+            /* 优化的颜色层次系统 */
+            --text-primary: #2c5282;      /* 深蓝色 - 主标题 */
+            --text-secondary: #3182ce;    /* 中蓝色 - 副标题 */
+            --text-tertiary: #4299e1;     /* 浅蓝色 - 描述文字 */
+            --text-accent: #63b3ed;       /* 强调色 - 悬停状态 */
+            --text-muted: #718096;        /* 灰蓝色 - 次要信息 */
+            
+            --bg-primary: #f7fafc;
+            --bg-secondary: #ffffff;
+            --bg-card: #ffffff;
+            --bg-card-hover: #f0f8ff;
+            
+            --border-color: #e2e8f0;
+            --border-hover: #87ceeb;
+            
+            --shadow-sm: 0 1px 3px 0 rgba(45, 82, 130, 0.1), 0 1px 2px 0 rgba(45, 82, 130, 0.06);
+            --shadow-md: 0 4px 6px -1px rgba(45, 82, 130, 0.1), 0 2px 4px -1px rgba(45, 82, 130, 0.06);
+            --shadow-lg: 0 10px 15px -3px rgba(45, 82, 130, 0.1), 0 4px 6px -2px rgba(45, 82, 130, 0.05);
+            --shadow-xl: 0 20px 25px -5px rgba(45, 82, 130, 0.1), 0 10px 10px -5px rgba(45, 82, 130, 0.04);
+            
+            --border-radius: 16px;
+            --border-radius-sm: 8px;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
 
-    @keyframes fadeIn {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #e6f3ff 0%, #cce7ff 50%, #b3daff 100%);
+            min-height: 100vh;
+            color: var(--text-secondary);
+            line-height: 1.6;
+            padding: clamp(10px, 2.5vw, 20px);
+            font-size: clamp(14px, 1.5vw, 16px);
+        }
 
-    h1 {
-      text-align: center;
-      font-size: var(--h1-font-size);
-      margin: 0 0 2vh; /* 调整标题间距 */
-      font-weight: bold;
-      color: black;
-      white-space: nowrap; /* 强制标题不换行 */
-    }
+        .container {
+            max-width: min(900px, 95vw);
+            margin: 0 auto;
+            background: var(--bg-secondary);
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow-xl);
+            overflow: hidden;
+            animation: slideUp 0.8s ease-out;
+            border: 1px solid var(--border-color);
+        }
 
-    ul {
-      list-style: none;
-      padding: 0;
-      margin: 0; /* 去掉默认的外边距 */
-      flex-grow: 1; /* 链接部分占据剩余空间 */
-      display: flex;
-      flex-direction: column;
-      justify-content: center; /* 链接垂直居中 */
-    }
+        @keyframes slideUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-    li {
-      font-size: var(--link-font-size);
-      margin: 1vh 0;
-    }
+        .header {
+            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            padding: clamp(30px, 6vw, 50px) clamp(20px, 4vw, 40px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            border-bottom: 1px solid var(--border-color);
+        }
 
-    a {
-      display: block;
-      padding: 1.5vh 3vw;
-      text-decoration: none;
-      font-size: var(--link-font-size); /* 使用调整后的字体大小 */
-      color: #0077cc;
-      font-weight: bold;
-      transition: all 0.3s;
-      border-radius: 5px;
-      touch-action: manipulation;
-    }
+        .header::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(135, 206, 235, 0.1) 0%, transparent 70%);
+            animation: float 8s ease-in-out infinite;
+        }
 
-    a:hover {
-      color: #005599;
-      background-color: #f0f0f0;
-      text-decoration: underline;
-    }
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-15px) rotate(180deg); }
+        }
 
-    .countdown-section {
-      margin: 2vh 0 0; /* 调整倒计时部分间距 */
-      width: 100%;
-      padding: 2vh 5vw;
-      border-radius: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      background-color: #f8f8f8;
-    }
+        .header h1 {
+            font-size: clamp(1.5rem, 5vw, 2.8rem);
+            font-weight: 700;
+            margin-bottom: clamp(8px, 2vw, 15px);
+            position: relative;
+            z-index: 1;
+            color: var(--text-primary);
+            text-shadow: 0 2px 4px rgba(44, 82, 130, 0.15);
+            letter-spacing: -0.02em;
+        }
 
-    .countdown-title {
-      font-size: clamp(1.2rem, 4vw, 1.6rem);
-      margin: 0 0 1.5vh;
-      font-weight: 600;
-    }
+        .header p {
+            font-size: clamp(0.9rem, 2.5vw, 1.3rem);
+            color: var(--text-secondary);
+            position: relative;
+            z-index: 1;
+            opacity: 0.9;
+            font-weight: 400;
+        }
 
-    .countdown-display {
-      font-size: var(--countdown-font);
-      font-weight: bold;
-      color: #2980b9;
-      word-break: break-word;
-    }
+        .content {
+            padding: clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px);
+        }
 
-    @media (orientation: portrait) {
-      .container {
-        width: 90%; /* 竖屏时调整为90%宽度 */
-        padding: 4vh 4vw; /* 调整竖屏时的内边距 */
-      }
-      
-      a {
-        padding: 1.5vh 4vw;
-      }
-    }
+        .links-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
+            gap: clamp(15px, 3vw, 25px);
+            margin-bottom: clamp(30px, 5vw, 50px);
+        }
 
-    @media (max-width: 480px) {
-      :root {
-        --base-font-size: clamp(12px, 3vw, 16px); /* 小屏幕下调整基础字体大小 */
-        --link-font-size: clamp(1.3rem, 4vw, 1.8rem); /* 小屏幕下调整链接字体大小 */
-      }
-      
-      .countdown-display {
-        line-height: 1.3;
-      }
-    }
-</style>
+        .link-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: clamp(20px, 4vw, 28px);
+            transition: var(--transition);
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+        }
+
+        .link-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.08), transparent);
+            transition: left 0.6s ease;
+        }
+
+        .link-card:hover::before {
+            left: 100%;
+        }
+
+        .link-card:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+            border-color: var(--border-hover);
+            background: var(--bg-card-hover);
+        }
+
+        .link-card a {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
+        .link-title {
+            font-size: clamp(1.1rem, 2.8vw, 1.4rem);
+            font-weight: 600;
+            color: var(--text-primary);
+            margin-bottom: clamp(6px, 1.5vw, 12px);
+            transition: var(--transition);
+            line-height: 1.3;
+            letter-spacing: -0.01em;
+        }
+
+        .link-card:hover .link-title {
+            color: var(--text-accent);
+        }
+
+        .link-description {
+            font-size: clamp(0.85rem, 2.2vw, 1.05rem);
+            color: var(--text-tertiary);
+            line-height: 1.5;
+            transition: var(--transition);
+        }
+
+        .link-card:hover .link-description {
+            color: var(--text-secondary);
+        }
+
+        .countdown-section {
+            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-primary) 100%);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: clamp(25px, 5vw, 40px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .countdown-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color), var(--secondary-color), #87ceeb);
+            border-radius: var(--border-radius);
+            z-index: -1;
+            animation: borderGlow 6s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% { filter: hue-rotate(0deg) brightness(1); }
+            50% { filter: hue-rotate(20deg) brightness(1.05); }
+            100% { filter: hue-rotate(0deg) brightness(1); }
+        }
+
+        .countdown-title {
+            font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+            font-weight: 600;
+            margin-bottom: clamp(15px, 3vw, 25px);
+            color: var(--text-primary);
+            text-shadow: 0 1px 3px rgba(44, 82, 130, 0.1);
+            letter-spacing: -0.01em;
+        }
+
+        .countdown-display {
+            font-size: clamp(1.3rem, 4.5vw, 2.4rem);
+            font-weight: 700;
+            font-family: 'Inter', 'Courier New', monospace;
+            color: var(--text-secondary);
+            text-shadow: 0 2px 4px rgba(49, 130, 206, 0.2);
+            letter-spacing: 0.02em;
+            line-height: 1.2;
+            word-spacing: 0.1em;
+        }
+
+        /* 响应式断点优化 */
+        @media (max-width: 480px) {
+            .countdown-display {
+                word-spacing: 0.05em;
+                letter-spacing: 0.01em;
+            }
+            
+            .links-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .link-card {
+                padding: clamp(16px, 4vw, 20px);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header {
+                padding: clamp(25px, 5vw, 35px) clamp(15px, 3vw, 25px);
+            }
+            
+            .content {
+                padding: clamp(25px, 4vw, 35px) clamp(15px, 3vw, 25px);
+            }
+        }
+
+        @media (min-width: 1200px) {
+            .links-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+        /* 加载动画优化 */
+        .link-card {
+            animation: fadeInUp 0.6s ease-out forwards;
+            opacity: 0;
+        }
+
+        .link-card:nth-child(1) { animation-delay: 0.1s; }
+        .link-card:nth-child(2) { animation-delay: 0.15s; }
+        .link-card:nth-child(3) { animation-delay: 0.2s; }
+        .link-card:nth-child(4) { animation-delay: 0.25s; }
+        .link-card:nth-child(5) { animation-delay: 0.3s; }
+        .link-card:nth-child(6) { animation-delay: 0.35s; }
+        .link-card:nth-child(7) { animation-delay: 0.4s; }
+        .link-card:nth-child(8) { animation-delay: 0.45s; }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* 可访问性改进 */
+        @media (prefers-reduced-motion: reduce) {
+            * {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+
+        /* 高对比度模式支持 */
+        @media (prefers-contrast: high) {
+            :root {
+                --text-primary: #1a202c;
+                --text-secondary: #2d3748;
+                --text-tertiary: #4a5568;
+                --border-color: #a0aec0;
+            }
+        }
+    </style>
 </head>
 <body>
-<div class="container">
-  <h1>欢迎访问hefengfan的主页</h1>
-  <ul>
-    <li><a href="https://hefengfan.github.io/xiangqiai">象棋AI</a></li>
-    <li><a href="https://hefengfan.github.io/gomocalcoffline/index">五子棋计算器</a></li>
-    <li><a href="https://hefengfan.zone.id">Nextchat</a></li>
-  </ul>
-  <div class="countdown-section">
-      <h2 class="countdown-title">距离2027高考还有：</h2>
-      <div class="countdown-display" id="countdown-display"></div>
+    <div class="container">
+        <div class="header">
+            <h1>欢迎访问hefengfan的主页</h1>
+            <p>探索精彩的在线工具和服务</p>
+        </div>
+        
+        <div class="content">
+            <div class="links-grid">
+                <div class="link-card">
+                    <a href="https://hefengfan.github.io/xiangqiai">
+                        <div class="link-title">丰帆象棋</div>
+                        <div class="link-description">超越人类棋手的在线象棋网站，体验顶级AI对弈</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://hefengfan.github.io/gomocalcoffline/index">
+                        <div class="link-title">五子棋计算器</div>
+                        <div class="link-description">与超级AI下五子棋，挑战你的策略思维</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://hefengfan.zone.id">
+                        <div class="link-title">Nextchat</div>
+                        <div class="link-description">在线与大模型聊天，智能对话体验</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://heliwen.zone.id">
+                        <div class="link-title">问小白Deepseek</div>
+                        <div class="link-description">与Deepseek联网进行聊天，获取最新信息</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://hffproxy.dpdns.org">
+                        <div class="link-title">反向代理网站</div>
+                        <div class="link-description">快速进入外网，畅享全球互联网</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://v2ray.zone.id">
+                        <div class="link-title">普通v2ray订阅</div>
+                        <div class="link-description">快速获取v2ray节点，稳定连接</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://hffv2ray.dpdns.org/hff">
+                        <div class="link-title">高级v2ray获取点</div>
+                        <div class="link-description">获取v2ray订阅＋优选ip，极速体验</div>
+                    </a>
+                </div>
+                
+                <div class="link-card">
+                    <a href="https://hfftv.zone.id">
+                        <div class="link-title">在线观看免费电影平台</div>
+                        <div class="link-description">进入畅享电影，海量影视资源</div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="countdown-section">
+                <h2 class="countdown-title">距离2027高考还有</h2>
+                <div id="countdown-display" class="countdown-display"></div>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <script>
-    const targetDate = new Date('2027-06-07T00:00:00');
-
-    function updateCountdown() {
-      const currentDate = new Date();
-      const timeLeft = targetDate - currentDate;
-
-      if (timeLeft < 0) {
-        document.getElementById('countdown-display').textContent = "2027高考倒计时已结束！";
-        return;
-      }
-
-      const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
-      const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-      const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-      const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
-
-      document.getElementById('countdown-display').innerHTML = `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
-    }
-    setInterval(updateCountdown, 1000);
-    updateCountdown();
-  </script>
-</div>
+    <script>
+        const targetDate = new Date('2027-06-07T00:00:00');
+        
+        function updateCountdown() {
+            const currentDate = new Date();
+            const timeLeft = targetDate - currentDate;
+            const countdownDisplay = document.getElementById('countdown-display');
+            
+            if (timeLeft < 0) {
+                countdownDisplay.textContent = "2027高考倒计时已结束！";
+                return;
+            }
+            
+            const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
+            const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+            const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+            const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
+            
+            countdownDisplay.innerHTML = `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
+        }
+        
+        // 初始化倒计时
+        updateCountdown();
+        // 每秒更新倒计时
+        setInterval(updateCountdown, 1000);
+        
+        // 添加键盘导航支持
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-navigation');
+            }
+        });
+        
+        document.addEventListener('mousedown', function() {
+            document.body.classList.remove('keyboard-navigation');
+        });
+    </script>
 </body>
 </html>
