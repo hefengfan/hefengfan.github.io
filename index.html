@@ -234,14 +234,8 @@
             animation: borderGlow 6s linear infinite;
         }
 
-        @keyframes borderGlow {
-            0% { filter: hue-rotate(0deg) brightness(1); }
-            50% { filter: hue-rotate(20deg) brightness(1.05); }
-            100% { filter: hue-rotate(0deg) brightness(1); }
-        }
-
         .countdown-title {
-            font-size: clamp(1.1rem, 3.5vw, 1.6rem);
+            font-size: clamp(1.3rem, 3.5vw, 1.6rem); /* Increased for better consistency */
             font-weight: 600;
             margin-bottom: clamp(15px, 3vw, 25px);
             color: var(--text-primary);
@@ -251,8 +245,8 @@
 
         .countdown-display {
             font-size: clamp(1.3rem, 4.5vw, 2.4rem);
-            font-weight: 700;
-            font-family: 'Inter', 'Courier New', monospace;
+            font-weight: 600; /* Changed to 600 to match other titles */
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Removed monospace */
             color: var(--text-secondary);
             text-shadow: 0 2px 4px rgba(49, 130, 206, 0.2);
             letter-spacing: 0.02em;
@@ -306,6 +300,7 @@
         .link-card:nth-child(6) { animation-delay: 0.35s; }
         .link-card:nth-child(7) { animation-delay: 0.4s; }
         .link-card:nth-child(8) { animation-delay: 0.45s; }
+        .link-card:nth-child(9) { animation-delay: 0.5s; }
 
         @keyframes fadeInUp {
             from {
@@ -413,8 +408,16 @@
                     <li>
                         <div class="link-card">
                             <a href="https://hfftv.zone.id">
-                                <div class="link-title">免费电影</div>
-                                <div class="link-description">进入畅享电影，海量影视资源</div>
+                                <div class="link-title">免费影视1</div>
+                                <div class="link-description">快速畅享影视，改善用户体验</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hefengfantv.zone.id">
+                                <div class="link-title">免费影视2</div>
+                                <div class="link-description">立即畅享影视，优化加载速度</div>
                             </a>
                         </div>
                     </li>
