@@ -6,42 +6,44 @@
     <title>hefengfan的主页</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        * {
+        /* Reset and Basic Styles */
+        *, *::before, *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
+        /* Color Palette (Optimized for Accessibility) */
         :root {
             --primary-color: #87ceeb;
             --secondary-color: #b0e0e6;
             --accent-color: #add8e6;
-            
-            /* 优化的颜色层次系统 */
-            --text-primary: #2c5282;      /* 深蓝色 - 主标题 */
-            --text-secondary: #3182ce;    /* 中蓝色 - 副标题 */
-            --text-tertiary: #4299e1;     /* 浅蓝色 - 描述文字 */
-            --text-accent: #63b3ed;       /* 强调色 - 悬停状态 */
-            --text-muted: #718096;        /* 灰蓝色 - 次要信息 */
-            
+
+            --text-primary: #2c5282;      /* Deep Blue - Main Titles */
+            --text-secondary: #3182ce;    /* Medium Blue - Subtitles */
+            --text-tertiary: #4299e1;     /* Light Blue - Descriptions */
+            --text-accent: #63b3ed;       /* Accent Blue - Hover States */
+            --text-muted: #718096;        /* Gray Blue - Secondary Info */
+
             --bg-primary: #f7fafc;
             --bg-secondary: #ffffff;
             --bg-card: #ffffff;
             --bg-card-hover: #f0f8ff;
-            
+
             --border-color: #e2e8f0;
             --border-hover: #87ceeb;
-            
+
             --shadow-sm: 0 1px 3px 0 rgba(45, 82, 130, 0.1), 0 1px 2px 0 rgba(45, 82, 130, 0.06);
             --shadow-md: 0 4px 6px -1px rgba(45, 82, 130, 0.1), 0 2px 4px -1px rgba(45, 82, 130, 0.06);
             --shadow-lg: 0 10px 15px -3px rgba(45, 82, 130, 0.1), 0 4px 6px -2px rgba(45, 82, 130, 0.05);
             --shadow-xl: 0 20px 25px -5px rgba(45, 82, 130, 0.1), 0 10px 10px -5px rgba(45, 82, 130, 0.04);
-            
+
             --border-radius: 16px;
             --border-radius-sm: 8px;
             --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
+        /* Body Styles */
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
             background: linear-gradient(135deg, #e6f3ff 0%, #cce7ff 50%, #b3daff 100%);
@@ -52,6 +54,7 @@
             font-size: clamp(14px, 1.5vw, 16px);
         }
 
+        /* Container Styles */
         .container {
             max-width: min(900px, 95vw);
             margin: 0 auto;
@@ -74,6 +77,7 @@
             }
         }
 
+        /* Header Styles */
         .header {
             background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
             padding: clamp(30px, 6vw, 50px) clamp(20px, 4vw, 40px);
@@ -119,17 +123,29 @@
             font-weight: 400;
         }
 
+        /* Main Content Styles */
         .content {
             padding: clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px);
+        }
+
+        /* Navigation Styles */
+        nav {
+            margin-bottom: clamp(30px, 5vw, 50px);
         }
 
         .links-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: clamp(15px, 3vw, 25px);
-            margin-bottom: clamp(30px, 5vw, 50px);
+            list-style: none; /* Remove default list styles */
+            padding: 0;       /* Remove default padding */
         }
 
+        .links-grid li {
+            /* Styles for list items (if needed) */
+        }
+
+        /* Link Card Styles */
         .link-card {
             background: var(--bg-card);
             border: 1px solid var(--border-color);
@@ -194,6 +210,7 @@
             color: var(--text-secondary);
         }
 
+        /* Countdown Section Styles */
         .countdown-section {
             background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-primary) 100%);
             border: 1px solid var(--border-color);
@@ -243,17 +260,17 @@
             word-spacing: 0.1em;
         }
 
-        /* 响应式断点优化 */
+        /* Responsive Breakpoints (Optimized) */
         @media (max-width: 480px) {
             .countdown-display {
                 word-spacing: 0.05em;
                 letter-spacing: 0.01em;
             }
-            
+
             .links-grid {
                 grid-template-columns: 1fr;
             }
-            
+
             .link-card {
                 padding: clamp(16px, 4vw, 20px);
             }
@@ -263,7 +280,7 @@
             .header {
                 padding: clamp(25px, 5vw, 35px) clamp(15px, 3vw, 25px);
             }
-            
+
             .content {
                 padding: clamp(25px, 4vw, 35px) clamp(15px, 3vw, 25px);
             }
@@ -275,7 +292,7 @@
             }
         }
 
-        /* 加载动画优化 */
+        /* Loading Animation Optimization */
         .link-card {
             animation: fadeInUp 0.6s ease-out forwards;
             opacity: 0;
@@ -301,7 +318,7 @@
             }
         }
 
-        /* 可访问性改进 */
+        /* Accessibility Improvements */
         @media (prefers-reduced-motion: reduce) {
             * {
                 animation-duration: 0.01ms !important;
@@ -310,7 +327,7 @@
             }
         }
 
-        /* 高对比度模式支持 */
+        /* High Contrast Mode Support */
         @media (prefers-contrast: high) {
             :root {
                 --text-primary: #1a202c;
@@ -319,115 +336,132 @@
                 --border-color: #a0aec0;
             }
         }
+
+        /* Keyboard Navigation Focus Styles */
+        body.keyboard-navigation .link-card:focus {
+            outline: 2px solid var(--accent-color); /* Or any other focus indicator */
+            outline-offset: 2px;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <div class="header">
+        <header class="header">
             <h1>欢迎访问hefengfan的主页</h1>
             <p>探索精彩的在线工具和服务</p>
-        </div>
-        
-        <div class="content">
-            <div class="links-grid">
-                <div class="link-card">
-                    <a href="https://hefengfan.github.io/xiangqiai">
-                        <div class="link-title">丰帆象棋</div>
-                        <div class="link-description">超越人类棋手的在线象棋网站，体验顶级AI对弈</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://hefengfan.github.io/gomocalcoffline/index">
-                        <div class="link-title">五子棋计算器</div>
-                        <div class="link-description">与超级AI下五子棋，挑战你的策略思维</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://hefengfan.zone.id">
-                        <div class="link-title">Nextchat</div>
-                        <div class="link-description">在线与大模型聊天，智能对话体验</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://heliwen.zone.id">
-                        <div class="link-title">问小白Deepseek</div>
-                        <div class="link-description">与Deepseek联网进行聊天，获取最新信息</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://hffproxy.dpdns.org">
-                        <div class="link-title">反向代理网站</div>
-                        <div class="link-description">快速进入外网，畅享全球互联网</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://v2ray.zone.id">
-                        <div class="link-title">普通v2ray订阅</div>
-                        <div class="link-description">快速获取v2ray节点，稳定连接</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://hffv2ray.dpdns.org/hff">
-                        <div class="link-title">高级v2ray获取点</div>
-                        <div class="link-description">获取v2ray订阅＋优选ip，极速体验</div>
-                    </a>
-                </div>
-                
-                <div class="link-card">
-                    <a href="https://hfftv.zone.id">
-                        <div class="link-title">在线观看免费电影平台</div>
-                        <div class="link-description">进入畅享电影，海量影视资源</div>
-                    </a>
-                </div>
-            </div>
-            
-            <div class="countdown-section">
+        </header>
+
+        <main class="content">
+            <nav>
+                <ul class="links-grid">
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hefengfan.github.io/xiangqiai">
+                                <div class="link-title">丰帆象棋</div>
+                                <div class="link-description">超越人类棋手的在线象棋，体验顶级AI对弈</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hefengfan.github.io/gomocalcoffline/index">
+                                <div class="link-title">五子棋计算器</div>
+                                <div class="link-description">与超级AI下五子棋，挑战你的策略思维</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://heliwen.zone.id">
+                                <div class="link-title">问小白Deepseek</div>
+                                <div class="link-description">与Deepseek联网进行聊天，获取最新信息</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hefengfan.zone.id">
+                                <div class="link-title">Nextchat</div>
+                                <div class="link-description">在线与大模型聊天，智能对话体验</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hffproxy.dpdns.org">
+                                <div class="link-title">反向代理网站</div>
+                                <div class="link-description">快速进入外网，畅享全球互联网</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://v2ray.zone.id">
+                                <div class="link-title">普通v2ray订阅</div>
+                                <div class="link-description">快速获取v2ray节点</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hffv2ray.dpdns.org/hff">
+                                <div class="link-title">高级v2ray订阅</div>
+                                <div class="link-description">获取v2ray订阅＋优选ip</div>
+                            </a>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://hfftv.zone.id">
+                                <div class="link-title">在线观看免费电影平台</div>
+                                <div class="link-description">进入畅享电影，海量影视资源</div>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </nav>
+
+            <section class="countdown-section">
                 <h2 class="countdown-title">距离2027高考还有</h2>
                 <div id="countdown-display" class="countdown-display"></div>
-            </div>
-        </div>
+            </section>
+        </main>
     </div>
 
     <script>
         const targetDate = new Date('2027-06-07T00:00:00');
-        
+
         function updateCountdown() {
             const currentDate = new Date();
             const timeLeft = targetDate - currentDate;
             const countdownDisplay = document.getElementById('countdown-display');
-            
+
             if (timeLeft < 0) {
                 countdownDisplay.textContent = "2027高考倒计时已结束！";
                 return;
             }
-            
+
             const days = Math.floor(timeLeft / (1000 * 60 * 60 * 24));
             const hours = String(Math.floor((timeLeft % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
             const minutes = String(Math.floor((timeLeft % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
             const seconds = String(Math.floor((timeLeft % (1000 * 60)) / 1000)).padStart(2, '0');
-            
+
             countdownDisplay.innerHTML = `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
         }
-        
-        // 初始化倒计时
+
+        // Initialize countdown
         updateCountdown();
-        // 每秒更新倒计时
+        // Update countdown every second
         setInterval(updateCountdown, 1000);
-        
-        // 添加键盘导航支持
-        document.addEventListener('keydown', function(e) {
+
+        // Keyboard navigation support
+        document.addEventListener('keydown', function (e) {
             if (e.key === 'Tab') {
                 document.body.classList.add('keyboard-navigation');
             }
         });
-        
-        document.addEventListener('mousedown', function() {
+
+        document.addEventListener('mousedown', function () {
             document.body.classList.remove('keyboard-navigation');
         });
     </script>
