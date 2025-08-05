@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hefengfan的主页</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         /* Reset and Basic Styles */
         *, *::before, *::after {
@@ -19,11 +18,11 @@
             --secondary-color: #b0e0e6;
             --accent-color: #add8e6;
 
-            --text-primary: #2c5282;      /* Deep Blue - Main Titles */
-            --text-secondary: #3182ce;    /* Medium Blue - Subtitles */
-            --text-tertiary: #4299e1;     /* Light Blue - Descriptions */
-            --text-accent: #63b3ed;       /* Accent Blue - Hover States */
-            --text-muted: #718096;        /* Gray Blue - Secondary Info */
+            --text-primary: #2c5282;
+            --text-secondary: #3182ce;
+            --text-tertiary: #4299e1;
+            --text-accent: #63b3ed;
+            --text-muted: #718096;
 
             --bg-primary: #f7fafc;
             --bg-secondary: #ffffff;
@@ -45,13 +44,15 @@
 
         /* Body Styles */
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: linear-gradient(135deg, #e6f3ff 0%, #cce7ff 50%, #b3daff 100%);
+            font-family: sans-serif;
+            background-color: #e6f3ff;
             min-height: 100vh;
             color: var(--text-secondary);
             line-height: 1.6;
             padding: clamp(10px, 2.5vw, 20px);
             font-size: clamp(14px, 1.5vw, 16px);
+            display: flex;
+            flex-direction: column;
         }
 
         /* Container Styles */
@@ -64,6 +65,9 @@
             overflow: hidden;
             animation: slideUp 0.8s ease-out;
             border: 1px solid var(--border-color);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         @keyframes slideUp {
@@ -79,7 +83,7 @@
 
         /* Header Styles */
         .header {
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            background-color: var(--bg-primary);
             padding: clamp(30px, 6vw, 50px) clamp(20px, 4vw, 40px);
             text-align: center;
             position: relative;
@@ -99,8 +103,13 @@
         }
 
         @keyframes float {
-            0%, 100% { transform: translateY(0px) rotate(0deg); }
-            50% { transform: translateY(-15px) rotate(180deg); }
+            0%, 100% {
+                transform: translateY(0px) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(180deg);
+            }
         }
 
         .header h1 {
@@ -126,6 +135,9 @@
         /* Main Content Styles */
         .content {
             padding: clamp(30px, 5vw, 50px) clamp(20px, 4vw, 40px);
+            flex: 1;
+            display: flex;
+            flex-direction: column;
         }
 
         /* Navigation Styles */
@@ -137,8 +149,8 @@
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(min(300px, 100%), 1fr));
             gap: clamp(15px, 3vw, 25px);
-            list-style: none; /* Remove default list styles */
-            padding: 0;       /* Remove default padding */
+            list-style: none;
+            padding: 0;
         }
 
         .links-grid li {
@@ -210,15 +222,114 @@
             color: var(--text-secondary);
         }
 
-        /* Countdown Section Styles */
-        .countdown-section {
-            background: linear-gradient(135deg, var(--bg-card) 0%, var(--bg-primary) 100%);
+        /* Subscription Section Styles */
+        .subscription-section {
+            background-color: var(--bg-card);
             border: 1px solid var(--border-color);
             border-radius: var(--border-radius);
             padding: clamp(25px, 5vw, 40px);
             text-align: center;
             position: relative;
             overflow: hidden;
+            max-width: 450px;
+            margin: 0 auto clamp(30px, 5vw, 50px); /* Adjusted margin */
+        }
+
+        .subscription-section::before {
+            content: '';
+            position: absolute;
+            top: -2px;
+            left: -2px;
+            right: -2px;
+            bottom: -2px;
+            background: linear-gradient(45deg, var(--accent-color), var(--primary-color), var(--secondary-color), #87ceeb);
+            border-radius: var(--border-radius);
+            z-index: -1;
+            animation: borderGlow 6s linear infinite;
+        }
+
+        @keyframes borderGlow {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        .subscription-title {
+            font-size: clamp(1.3rem, 3.5vw, 1.6rem);
+            font-weight: bold;
+            margin-bottom: clamp(15px, 3vw, 25px);
+            color: var(--text-primary);
+            text-shadow: 0 1px 3px rgba(44, 82, 130, 0.1);
+            letter-spacing: -0.01em;
+            font-family: sans-serif;
+        }
+
+        .subscription-content {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 15px;
+        }
+
+        #copy-button {
+            padding: 12px 25px;
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            border-radius: var(--border-radius-sm);
+            font-size: clamp(0.9rem, 2.2vw, 1.1rem);
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: var(--shadow-sm);
+            font-family: sans-serif;
+        }
+
+        #copy-button:hover {
+            background-color: #63b3ed;
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-md);
+        }
+
+        #copy-button:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow-sm);
+        }
+
+        #copy-button:disabled {
+            background-color: #ccc;
+            cursor: not-allowed;
+            box-shadow: none;
+        }
+
+        .copy-status {
+            margin-top: 10px;
+            font-size: clamp(0.8rem, 2vw, 0.95rem);
+            font-weight: 500;
+            color: var(--text-muted);
+            min-height: 20px;
+        }
+
+        /* Countdown Section Styles */
+        .countdown-section {
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: var(--border-radius);
+            padding: clamp(25px, 5vw, 40px);
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+            max-width: 450px;
+            margin: 0 auto clamp(30px, 5vw, 50px); /* Adjusted margin */
         }
 
         .countdown-section::before {
@@ -235,7 +346,7 @@
         }
 
         .countdown-title {
-            font-size: clamp(1.3rem, 3.5vw, 1.6rem); /* Increased for better consistency */
+            font-size: clamp(1.3rem, 3.5vw, 1.6rem);
             font-weight: 600;
             margin-bottom: clamp(15px, 3vw, 25px);
             color: var(--text-primary);
@@ -245,8 +356,8 @@
 
         .countdown-display {
             font-size: clamp(1.3rem, 4.5vw, 2.4rem);
-            font-weight: 600; /* Changed to 600 to match other titles */
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; /* Removed monospace */
+            font-weight: 600;
+            font-family: sans-serif;
             color: var(--text-secondary);
             text-shadow: 0 2px 4px rgba(49, 130, 206, 0.2);
             letter-spacing: 0.02em;
@@ -292,21 +403,48 @@
             opacity: 0;
         }
 
-        .link-card:nth-child(1) { animation-delay: 0.1s; }
-        .link-card:nth-child(2) { animation-delay: 0.15s; }
-        .link-card:nth-child(3) { animation-delay: 0.2s; }
-        .link-card:nth-child(4) { animation-delay: 0.25s; }
-        .link-card:nth-child(5) { animation-delay: 0.3s; }
-        .link-card:nth-child(6) { animation-delay: 0.35s; }
-        .link-card:nth-child(7) { animation-delay: 0.4s; }
-        .link-card:nth-child(8) { animation-delay: 0.45s; }
-        .link-card:nth-child(9) { animation-delay: 0.5s; }
+        .link-card:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .link-card:nth-child(2) {
+            animation-delay: 0.15s;
+        }
+
+        .link-card:nth-child(3) {
+            animation-delay: 0.2s;
+        }
+
+        .link-card:nth-child(4) {
+            animation-delay: 0.25s;
+        }
+
+        .link-card:nth-child(5) {
+            animation-delay: 0.3s;
+        }
+
+        .link-card:nth-child(6) {
+            animation-delay: 0.35s;
+        }
+
+        .link-card:nth-child(7) {
+            animation-delay: 0.4s;
+        }
+
+        .link-card:nth-child(8) {
+            animation-delay: 0.45s;
+        }
+
+        .link-card:nth-child(9) {
+            animation-delay: 0.5s;
+        }
 
         @keyframes fadeInUp {
             from {
                 opacity: 0;
                 transform: translateY(20px);
             }
+
             to {
                 opacity: 1;
                 transform: translateY(0);
@@ -333,12 +471,14 @@
         }
 
         /* Keyboard Navigation Focus Styles */
-        body.keyboard-navigation .link-card:focus {
-            outline: 2px solid var(--accent-color); /* Or any other focus indicator */
+        body.keyboard-navigation .link-card:focus,
+        body.keyboard-navigation #copy-button:focus {
+            outline: 2px solid var(--accent-color);
             outline-offset: 2px;
         }
     </style>
 </head>
+
 <body>
     <div class="container">
         <header class="header">
@@ -391,30 +531,30 @@
                     </li>
                     <li>
                         <div class="link-card">
-                            <a href="https://v2ray.zone.id">
-                                <div class="link-title">普通v2ray订阅</div>
-                                <div class="link-description">快速获取v2ray节点</div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="link-card">
-                            <a href="https://hffv2ray.dpdns.org/hff">
-                                <div class="link-title">高级v2ray订阅</div>
-                                <div class="link-description">获取v2ray订阅＋优选ip</div>
-                            </a>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="link-card">
                             <a href="https://hffnew.zone.id">
                                 <div class="link-title">新闻联播摘要</div>
                                 <div class="link-description">快速预览历史新闻联播摘要</div>
                             </a>
                         </div>
                     </li>
+                    <li>
+                        <div class="link-card">
+                            <a href="https://tv.hffapi.dpdns.org">
+                                <div class="link-title">影视收集</div>
+                                <div class="link-description">畅享海量免费无广告极速影视</div>
+                            </a>
+                        </div>
+                    </li>
                 </ul>
             </nav>
+
+            <section class="subscription-section">
+                <h2 class="subscription-title">高级v2ray订阅</h2>
+                <div class="subscription-content">
+                    <button id="copy-button" disabled>获取订阅链接...</button>
+                    <div id="copy-status" class="copy-status"></div>
+                </div>
+            </section>
 
             <section class="countdown-section">
                 <h2 class="countdown-title">距离2027高考还有</h2>
@@ -424,6 +564,74 @@
     </div>
 
     <script>
+        const subscriptionUrl = 'https://sub.hffv2ray.dpdns.org/hff?sub';
+        const corsProxy = '';
+        const copyButton = document.getElementById('copy-button');
+        const copyStatusDiv = document.getElementById('copy-status');
+
+        async function fetchSubscriptionContent() {
+            copyButton.textContent = '获取订阅链接...';
+            copyButton.disabled = true;
+            copyStatusDiv.textContent = '';
+
+            try {
+                const proxiedUrl = corsProxy + encodeURIComponent(subscriptionUrl);
+                const response = await fetch(proxiedUrl);
+
+                if (!response.ok) {
+                    throw new Error(`HTTP error! Status: ${response.status} ${response.statusText}`);
+                }
+
+                const content = await response.text();
+                // Store the content for copying later
+                copyButton.dataset.subscriptionContent = content;
+                copyButton.textContent = '一键复制订阅链接';
+                copyButton.disabled = false;
+            } catch (error) {
+                console.error('获取订阅内容失败:', error);
+                copyButton.textContent = '获取失败，请稍后再试';
+                copyStatusDiv.textContent = '获取失败！';
+                copyStatusDiv.style.color = 'red';
+            }
+        }
+
+        function copySubscriptionContent() {
+            const textToCopy = copyButton.dataset.subscriptionContent;
+
+            const tempTextarea = document.createElement("textarea");
+            tempTextarea.value = textToCopy;
+
+            tempTextarea.style.position = "fixed";
+            tempTextarea.style.top = 0;
+            tempTextarea.style.left = 0;
+            tempTextarea.style.width = "2em";
+            tempTextarea.style.height = "2em";
+            tempTextarea.style.padding = 0;
+            tempTextarea.style.border = "none";
+            tempTextarea.style.outline = "none";
+            tempTextarea.style.boxShadow = "none";
+            tempTextarea.style.background = "transparent";
+
+            document.body.appendChild(tempTextarea);
+            tempTextarea.focus();
+            tempTextarea.select();
+
+            try {
+                const successful = document.execCommand('copy');
+                const msg = successful ? '已复制！' : '复制成功';
+                copyStatusDiv.textContent = msg;
+                copyStatusDiv.style.color = successful ? 'green' : 'red';
+                setTimeout(() => copyStatusDiv.textContent = '', 2000);
+
+            } catch (err) {
+                console.error('复制失败:', err);
+                copyStatusDiv.textContent = '复制失败！请手动复制。';
+                copyStatusDiv.style.color = 'red';
+            } finally {
+                document.body.removeChild(tempTextarea);
+            }
+        }
+
         const targetDate = new Date('2027-06-07T00:00:00');
 
         function updateCountdown() {
@@ -444,12 +652,14 @@
             countdownDisplay.innerHTML = `${days}天 ${hours}时 ${minutes}分 ${seconds}秒`;
         }
 
-        // Initialize countdown
-        updateCountdown();
-        // Update countdown every second
-        setInterval(updateCountdown, 1000);
+        document.addEventListener('DOMContentLoaded', () => {
+            fetchSubscriptionContent();
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+        });
 
-        // Keyboard navigation support
+        copyButton.addEventListener('click', copySubscriptionContent);
+
         document.addEventListener('keydown', function (e) {
             if (e.key === 'Tab') {
                 document.body.classList.add('keyboard-navigation');
@@ -461,4 +671,5 @@
         });
     </script>
 </body>
+
 </html>
