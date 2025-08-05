@@ -575,7 +575,7 @@
             copyStatusDiv.textContent = '';
 
             try {
-                const proxiedUrl = corsProxy + encodeURIComponent(subscriptionUrl);
+                const proxiedUrl = subscriptionUrl;
                 const response = await fetch(proxiedUrl);
 
                 if (!response.ok) {
