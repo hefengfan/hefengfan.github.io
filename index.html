@@ -537,14 +537,6 @@
                             </a>
                         </div>
                     </li>
-                    <li>
-                        <div class="link-card">
-                            <a href="https://tv.hffapi.dpdns.org">
-                                <div class="link-title">影视收集</div>
-                                <div class="link-description">畅享海量免费无广告极速影视</div>
-                            </a>
-                        </div>
-                    </li>
                 </ul>
             </nav>
 
@@ -565,7 +557,7 @@
 
     <script>
         const subscriptionUrl = 'https://sub.hffv2ray.dpdns.org/hff?sub';
-        const corsProxy = '';
+        const corsProxy = 'https://corsproxy.io/?';
         const copyButton = document.getElementById('copy-button');
         const copyStatusDiv = document.getElementById('copy-status');
 
@@ -575,7 +567,7 @@
             copyStatusDiv.textContent = '';
 
             try {
-                const proxiedUrl = subscriptionUrl;
+                const proxiedUrl = corsProxy + encodeURIComponent(subscriptionUrl);
                 const response = await fetch(proxiedUrl);
 
                 if (!response.ok) {
